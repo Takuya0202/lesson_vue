@@ -43,6 +43,12 @@ import { ref, computed } from 'vue'
 | Zustand / Redux | Pinia |
 | `useEffect(fn, [])` | `onMounted()` |
 
+## サンプルコードの提示方法
+
+- **ファイルを自動生成しない** — コードはチャット内のコードブロックで提示し、ユーザーが自分で書く。
+- ファイル名は `src/components/Step{フェーズ}_{ステップ}_{トピック}.vue` 形式で提示。
+- `App.vue` への import 例もあわせて示す。
+
 ## 進捗記録の手順
 
 トピックを教えた後、ユーザーが理解を示したら:
