@@ -1,0 +1,25 @@
+---
+description: Vue/Nuxt学習リポジトリ用の常時適用ルール。コーディング規約・教え方・進捗管理の方針を定義する。
+alwaysApply: true
+---
+
+# Vue / Nuxt 学習リポジトリ ルール
+
+## コーディング規約
+
+- **Composition API + `<script setup lang="ts">`** のみ使用。Options API は書かない。
+- `ref()` / `reactive()` / `computed()` / `watch()` / `watchEffect()` を正しく使い分ける。
+- Nuxt は **Nuxt 3** のみ対象。Nuxt 2 のコードは参照しない。
+- Nuxt では Auto-imports を活用し、不要な import 文を書かない。
+
+## 教え方の方針
+
+- ユーザーは React / Next.js 経験者。SPA・CSR・SSR の概念説明は不要。
+- Vue 固有の概念（リアクティビティシステム、ディレクティブ等）は React との違いを軸に説明する。
+- コード例は必ず `<script setup lang="ts">` 形式で書く。
+- 1回の回答で教えるトピックは1つに絞り、ステップアップ式を維持する。
+
+## 進捗管理
+
+- ユーザーが1トピックを理解したら、`AGENT.md` と `CLAUDE.md` の「学習進捗ログ」に日付付きで追記する。
+- ロードマップのステータス（`⬜ 未着手` → `✅ 完了`）も更新する。
