@@ -75,7 +75,7 @@ export default {
 |---|---------|---------|
 | 1-1 | テンプレート構文（`v-bind`, `v-on`, `v-if`, `v-for`） | ✅ 完了 |
 | 1-2 | リアクティビティ基礎（`ref`, `reactive`） | ✅ 完了 |
-| 1-3 | `computed` / `watch` / `watchEffect` | ⬜ 未着手 |
+| 1-3 | `computed` / `watch` / `watchEffect` | ✅ 完了 |
 | 1-4 | コンポーネント分割・`props` / `emits` | ⬜ 未着手 |
 | 1-5 | スロット（`slot` / `v-slot`） | ⬜ 未着手 |
 | 1-6 | ライフサイクルフック（`onMounted` など） | ⬜ 未着手 |
@@ -110,6 +110,11 @@ export default {
   - `v-bind` / `v-on` の短縮記法（`:` / `@`）を理解
   - `v-if` / `v-else` / `v-for` の使い方
   - `key` 属性の重要性（React の `key` と同じ役割）
+- **1-3 computed / watch / watchEffect** 完了
+  - `computed` は `useMemo` 相当。依存配列不要で自動追跡、キャッシュされる
+  - `watch` は特定の値を明示的に監視。変更前後の値を受け取れる
+  - `watchEffect` は依存を自動追跡するが、現場では `watch` の方が多用される
+  - マウント時だけ実行したい場合は `onMounted`（1-6）を使う
 - **1-2 リアクティビティ基礎** 完了
   - `ref` はプリミティブ用。`script` 内は `.value` でアクセス、テンプレート内は不要
   - `reactive` はオブジェクト・配列用。`.value` 不要だが分割代入でリアクティビティが消える
