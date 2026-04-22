@@ -10,4 +10,5 @@ import Lesson3 from './components/lesson/lesson3.vue';
    <!-- <Lesson1 />
    <Lesson2 /> -->
    <Lesson3 />
+   
 </template>
