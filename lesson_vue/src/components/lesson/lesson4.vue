@@ -9,6 +9,6 @@ const props = defineProps<{
 </script>
 
 <template>
-    <h1>{{ props.title }}</h1>
+    <h1 class="text-2xl font-bold text-red-500">{{ props.title }}</h1>
     <p>{{ props.description }}</p>
 </template>
