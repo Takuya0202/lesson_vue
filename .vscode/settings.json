@@ -1,0 +1,4 @@
+{
+  "typescript.tsdk": "lesson_vue/node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true
+}
