@@ -76,7 +76,7 @@ export default {
 | 1-1 | テンプレート構文（`v-bind`, `v-on`, `v-if`, `v-for`） | ✅ 完了 |
 | 1-2 | リアクティビティ基礎（`ref`, `reactive`） | ✅ 完了 |
 | 1-3 | `computed` / `watch` / `watchEffect` | ✅ 完了 |
-| 1-4 | コンポーネント分割・`props` / `emits` | ⬜ 未着手 |
+| 1-4 | コンポーネント分割・`props` / `emits` | ✅ 完了 |
 | 1-5 | スロット（`slot` / `v-slot`） | ⬜ 未着手 |
 | 1-6 | ライフサイクルフック（`onMounted` など） | ⬜ 未着手 |
 | 1-7 | `provide` / `inject` | ⬜ 未着手 |
@@ -120,6 +120,14 @@ export default {
   - `reactive` はオブジェクト・配列用。`.value` 不要だが分割代入でリアクティビティが消える
   - Vue の `ref` は React の `useState` 相当（`useRef` とは別物）
   - 迷ったら `ref` に統一するスタイルもある
+
+### 2026-04-22
+- **1-4 コンポーネント分割・`props` / `emits`** 完了
+  - `defineProps<T>()` で型安全に props を受け取る
+  - 文字列以外の props（number, boolean, object）は `:` (v-bind) が必要
+  - `defineEmits<T>()` で子→親のイベント通知を行う
+  - 「何をするかは親が決め、いつ発火するかは子が決める」という役割分担
+  - 関数を props で渡すことは技術的には可能だが、Vue では emit が正規の手段
 
 ---
 

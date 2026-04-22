@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 
 // propsを定義 import不要
-const props = defineProps({
+const props = defineProps<{
     title : string,
     description : string
-})
+}>()
 
 </script>
 
