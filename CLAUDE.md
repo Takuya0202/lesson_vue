@@ -77,7 +77,7 @@ export default {
 | 1-2 | リアクティビティ基礎（`ref`, `reactive`） | ✅ 完了 |
 | 1-3 | `computed` / `watch` / `watchEffect` | ✅ 完了 |
 | 1-4 | コンポーネント分割・`props` / `emits` | ✅ 完了 |
-| 1-5 | スロット（`slot` / `v-slot`） | ⬜ 未着手 |
+| 1-5 | スロット（`slot` / `v-slot`） | ✅ 完了 |
 | 1-6 | ライフサイクルフック（`onMounted` など） | ⬜ 未着手 |
 | 1-7 | `provide` / `inject` | ⬜ 未着手 |
 | 1-8 | Vue Router 4（SPA ルーティング） | ⬜ 未着手 |
@@ -128,6 +128,13 @@ export default {
   - `defineEmits<T>()` で子→親のイベント通知を行う
   - 「何をするかは親が決め、いつ発火するかは子が決める」という役割分担
   - 関数を props で渡すことは技術的には可能だが、Vue では emit が正規の手段
+
+### 2026-04-23
+- **1-5 スロット（`slot` / `v-slot`）** 完了
+  - デフォルトスロットと名前付きスロット（`#header` など）の役割を理解
+  - scoped slot は「子がデータ、親が UI」を分離するための仕組みだと理解
+  - `v-slot` で子から受け取った値（例: `user`, `index`）を親テンプレートで描画できる
+  - 実務では DataTable / headless UI など、共通ロジックと画面ごとの見た目を分離したい場面で有効
 
 ---
 
