@@ -82,7 +82,7 @@ export default {
 | 1-3 | `computed` / `watch` / `watchEffect` | ✅ 完了 |
 | 1-4 | コンポーネント分割・`props` / `emits` | ✅ 完了 |
 | 1-5 | スロット（`slot` / `v-slot`） | ✅ 完了 |
-| 1-6 | ライフサイクルフック（`onMounted` など） | ⬜ 未着手 |
+| 1-6 | ライフサイクルフック（`onMounted` など） | ✅ 完了 |
 | 1-7 | `provide` / `inject` | ⬜ 未着手 |
 | 1-8 | Vue Router 4（SPA ルーティング） | ⬜ 未着手 |
 | 1-9 | Pinia（状態管理） | ⬜ 未着手 |
@@ -147,6 +147,13 @@ export default {
   - scoped slot は「子がデータ、親が UI」を分離するための仕組みだと理解
   - `v-slot` で子から受け取った値（例: `user`, `index`）を親テンプレートで描画できる
   - 実務では DataTable / headless UI など、共通ロジックと画面ごとの見た目を分離したい場面で有効
+
+### 2026-04-24
+- **1-6 ライフサイクルフック（`onMounted` など）** 完了
+  - `onMounted` は初回レンダリング完了後に1回実行される（React の `useEffect(..., [])` に近い）
+  - 依存値の変化に追従する処理は `watch` / `watchEffect` が適切
+  - `onUnmounted` はクリーンアップ用途（`setInterval`、イベントリスナー、購読の解除）
+  - API 取得は `onMounted` で開始でき、必要なら `AbortController` で中断制御できる
 
 ---
 
