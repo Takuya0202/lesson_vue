@@ -13,6 +13,8 @@ import Lesson52Pararent from './components/lesson/lesson5-2-pararent.vue'
 import Lesson53Pararent from './components/lesson/lesson5-3-pararent.vue'
 import Lesson6 from './components/lesson/lesson6.vue'
 import Lesson61 from './components/lesson/lesson6-1.vue'
+import Lesson7Provider from './components/lesson/lesson7-provider.vue'
+import Lesson7Child from './components/lesson/lesson7-child.vue'
 
 const count = ref(0)
 function handleIncrement(value: number) {
@@ -34,4 +36,7 @@ const handleOpen = () => {
   <Lesson53Pararent />
   <Lesson6 />
   <Lesson61 />
+  <Lesson7Provider>
+    <Lesson7Child />
+  </Lesson7Provider>
 </template>

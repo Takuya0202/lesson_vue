@@ -79,7 +79,7 @@ export default {
 | 1-4 | コンポーネント分割・`props` / `emits` | ✅ 完了 |
 | 1-5 | スロット（`slot` / `v-slot`） | ✅ 完了 |
 | 1-6 | ライフサイクルフック（`onMounted` など） | ✅ 完了 |
-| 1-7 | `provide` / `inject` | ⬜ 未着手 |
+| 1-7 | `provide` / `inject` | ✅ 完了 |
 | 1-8 | Vue Router 4（SPA ルーティング） | ⬜ 未着手 |
 | 1-9 | Pinia（状態管理） | ⬜ 未着手 |
 | 1-10 | Composables（ロジック再利用） | ⬜ 未着手 |
@@ -142,6 +142,14 @@ export default {
   - 依存値の変化に追従する処理は `watch` / `watchEffect` が適切
   - `onUnmounted` はクリーンアップ用途（`setInterval`、イベントリスナー、購読の解除）
   - API 取得は `onMounted` で開始でき、必要なら `AbortController` で中断制御できる
+
+### 2026-04-25
+- **1-7 `provide` / `inject`** 完了
+  - `provide` / `inject` は React の Context（Provider / `useContext`）に近いと理解
+  - `Symbol` をキーにすると衝突しない一意キーになり安全に受け渡せると理解
+  - `slot` は React の `children` と同じ役割で、親が渡した要素を子側で差し込むための仕組みだと理解
+  - `<script setup>` では `export` できないため、共有する型やキーは通常の `<script>` または `.ts` へ分離する必要があると理解
+  - 局所状態は `provide` / `inject`、アプリ横断状態は Pinia を使い分ける方針を理解
 
 ---
 
