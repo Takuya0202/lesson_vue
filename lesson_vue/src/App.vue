@@ -31,12 +31,14 @@ const handleOpen = () => {
 </script>
 
 <template>
-  <Lesson5Pararent />
+  <!-- <Lesson5Pararent />
   <Lesson52Pararent />
   <Lesson53Pararent />
   <Lesson6 />
   <Lesson61 />
   <Lesson7Provider>
     <Lesson7Child />
-  </Lesson7Provider>
+  </Lesson7Provider> -->
+  <!-- 現在のurlに一致したpageを表示 -->
+  <RouterView />
 </template>

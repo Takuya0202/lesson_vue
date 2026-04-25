@@ -84,7 +84,7 @@ export default {
 | 1-5 | スロット（`slot` / `v-slot`） | ✅ 完了 |
 | 1-6 | ライフサイクルフック（`onMounted` など） | ✅ 完了 |
 | 1-7 | `provide` / `inject` | ✅ 完了 |
-| 1-8 | Vue Router 4（SPA ルーティング） | ⬜ 未着手 |
+| 1-8 | Vue Router 4（SPA ルーティング） | ✅ 完了 |
 | 1-9 | Pinia（状態管理） | ⬜ 未着手 |
 | 1-10 | Composables（ロジック再利用） | ⬜ 未着手 |
 
@@ -162,6 +162,14 @@ export default {
   - `slot` は React の `children` と同じ役割で、親が渡した要素を子側で差し込むための仕組みだと理解
   - `<script setup>` では `export` できないため、共有する型やキーは通常の `<script>` または `.ts` へ分離する必要があると理解
   - 局所状態は `provide` / `inject`、アプリ横断状態は Pinia を使い分ける方針を理解
+- **1-8 Vue Router 4（SPA ルーティング）** 完了
+  - `createRouter` + `createWebHistory` でルーター作成、`.use(router)` でアプリに登録
+  - `<RouterView />` は React の `<Outlet />` 相当。ルートに一致したコンポーネントの描画先
+  - `<RouterLink>` は React の `<Link>` 相当。SPA 遷移を行う
+  - `useRoute()` は「今どこにいるか」（params, query）、`useRouter()` は「どこへ行くか」（push, replace, back）
+  - 同じルート内で param だけ変わる場合、コンポーネントは再マウントされないため `watch` で検知する（React の `useEffect(fn, [id])` と同じ）
+  - `createWebHistory`（きれいな URL）と `createWebHashHistory`（`#` 付き URL）の2種類があり、実務では前者が主流
+  - ページコンポーネントは `pages/` や `views/` に分離するのが実務の慣習。Nuxt では `pages/` に置くと自動でルート生成される
 
 ---
 
