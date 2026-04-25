@@ -85,7 +85,7 @@ export default {
 | 1-6 | ライフサイクルフック（`onMounted` など） | ✅ 完了 |
 | 1-7 | `provide` / `inject` | ✅ 完了 |
 | 1-8 | Vue Router 4（SPA ルーティング） | ✅ 完了 |
-| 1-9 | Pinia（状態管理） | ⬜ 未着手 |
+| 1-9 | Pinia（状態管理） | ✅ 完了 |
 | 1-10 | Composables（ロジック再利用） | ⬜ 未着手 |
 
 ### Phase 2: Nuxt 3
@@ -170,6 +170,13 @@ export default {
   - 同じルート内で param だけ変わる場合、コンポーネントは再マウントされないため `watch` で検知する（React の `useEffect(fn, [id])` と同じ）
   - `createWebHistory`（きれいな URL）と `createWebHashHistory`（`#` 付き URL）の2種類があり、実務では前者が主流
   - ページコンポーネントは `pages/` や `views/` に分離するのが実務の慣習。Nuxt では `pages/` に置くと自動でルート生成される
+- **1-9 Pinia（状態管理）** 完了
+  - Pinia は Zustand に非常に近い構造で、`defineStore` の Setup 記法なら中身は普通の Composition API
+  - `ref` が state、`computed` が getter、関数が action に対応する
+  - Setup 記法では TypeScript の型が自動推論されるため、別途型定義は不要
+  - `storeToRefs()` はストアの state/getter をリアクティブに分割代入するときだけ必要。ドット記法（`store.count`）で使うなら不要
+  - 同じストアを複数コンポーネントから使うと状態が自動で同期される
+  - `provide/inject` は局所的な依存注入、Pinia はアプリ横断のグローバル状態管理と使い分ける
 
 ---
 

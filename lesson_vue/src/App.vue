@@ -15,6 +15,7 @@ import Lesson6 from './components/lesson/lesson6.vue'
 import Lesson61 from './components/lesson/lesson6-1.vue'
 import Lesson7Provider from './components/lesson/lesson7-provider.vue'
 import Lesson7Child from './components/lesson/lesson7-child.vue'
+import Lesson9 from './components/lesson/lesson9.vue'
 
 const count = ref(0)
 function handleIncrement(value: number) {
@@ -41,4 +42,5 @@ const handleOpen = () => {
   </Lesson7Provider> -->
   <!-- 現在のurlに一致したpageを表示 -->
   <RouterView />
+  <Lesson9 />
 </template>
