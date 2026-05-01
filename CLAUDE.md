@@ -82,7 +82,7 @@ export default {
 | 1-7 | `provide` / `inject` | ✅ 完了 |
 | 1-8 | Vue Router 4（SPA ルーティング） | ✅ 完了 |
 | 1-9 | Pinia（状態管理） | ✅ 完了 |
-| 1-10 | Composables（ロジック再利用） | ⬜ 未着手 |
+| 1-10 | Composables（ロジック再利用） | ✅ 完了 |
 
 ### Phase 1.5A: UI ライブラリ — shadcn-vue
 
@@ -228,6 +228,15 @@ export default {
   - `storeToRefs()` はストアの state/getter をリアクティブに分割代入するときだけ必要。ドット記法（`store.count`）で使うなら不要
   - 同じストアを複数コンポーネントから使うと状態が自動で同期される
   - `provide/inject` は局所的な依存注入、Pinia はアプリ横断のグローバル状態管理と使い分ける
+
+### 2026-05-02
+- **1-10 Composables（ロジック再利用）** 完了
+  - Composable は React のカスタムフック相当。`use〇〇` 命名で `src/composables/` に置く
+  - `use〇〇` は命名規則ではなく設計パターン。「リアクティブな状態を内包する再利用ロジック」というシグナル
+  - Composable はコンポーネントごとに独立した状態を持つ（グローバル共有は Pinia の責務）
+  - `src/` 外のファイルは `tsconfig.app.json` の `include` 対象外になるため補完・型解決が効かない
+  - `useFetch` で `onMounted` は不要。fetch は DOM 不要なので `setup()` 実行時に直接呼ぶ。`onMounted` を使うとコンポーネント外（Pinia ストアなど）から呼べなくなる
+  - 役割の使い分け: props/emits（2階層）、provide/inject（3階層以上の橋渡し）、Composable（再利用ロジック）、Pinia（グローバル状態）
 
 ---
 
