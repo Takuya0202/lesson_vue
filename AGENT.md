@@ -105,7 +105,7 @@ export default {
 | # | トピック | ステータス |
 |---|---------|---------|
 | 1.5B-1 | Vuetify 3 セットアップ（プラグイン登録・SASS 設定） | ✅ 完了 |
-| 1.5B-2 | レイアウト系（`v-app`, `v-container`, `v-row`, `v-col` グリッド） | ⬜ 未着手 |
+| 1.5B-2 | レイアウト系（`v-app`, `v-container`, `v-row`, `v-col` グリッド） | ✅ 完了 |
 | 1.5B-3 | 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`） | ⬜ 未着手 |
 | 1.5B-4 | フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション） | ⬜ 未着手 |
 | 1.5B-5 | データ表示系（`v-data-table`, `v-tabs`, `v-expansion-panels`） | ⬜ 未着手 |
@@ -287,6 +287,14 @@ Phase 2 で学んだ Nuxt 固有の機能をすべて使うアプリ。
   - `vite-plugin-vuetify` の `autoImport: true` で tree-shaking が有効になり、使用コンポーネントだけバンドルされる
   - 未登録のタグ（typo 含む）はエラーにならず、Web 標準のカスタム要素として素通りする（ハイフン付きタグは Custom Elements の仕様）
   - `.vue` ファイルの型解決には `vite-env.d.ts` の `declare module '*.vue'` が必要
+- **1.5B-2 レイアウト系（`v-container`, `v-row`, `v-col` グリッド）** 完了
+  - Vuetify は 12カラムグリッド。`v-col` の `cols` は 12分割のうち何カラム分かの絶対指定（比ではない）
+  - `cols` 省略時は `flex: 1` で均等分割される
+  - `v-row` は MUI の `<Grid container>`、`v-col` は `<Grid item>` に相当するが、別タグに分かれている
+  - レスポンシブは `cols="12" md="4"` のように prop で指定。分母は常に12で、ブレークポイントごとにカラム数を切り替える
+  - `v-row` の `justify`（水平）/ `align`（垂直）/ `no-gutters`（余白除去）で配置制御
+  - `v-col` の `offset`（左余白）/ `order`（表示順）で細かいレイアウト調整が可能
+  - ユーティリティクラスは `{property}{direction}-{size}` 規則（`pa-4` = padding-all 16px）
 
 ---
 
