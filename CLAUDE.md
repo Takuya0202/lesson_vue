@@ -100,7 +100,7 @@ export default {
 
 | # | トピック | ステータス |
 |---|---------|---------|
-| 1.5B-1 | Vuetify 3 セットアップ（プラグイン登録・SASS 設定） | ⬜ 未着手 |
+| 1.5B-1 | Vuetify 3 セットアップ（プラグイン登録・SASS 設定） | ✅ 完了 |
 | 1.5B-2 | レイアウト系（`v-app`, `v-container`, `v-row`, `v-col` グリッド） | ⬜ 未着手 |
 | 1.5B-3 | 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`） | ⬜ 未着手 |
 | 1.5B-4 | フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション） | ⬜ 未着手 |
@@ -265,6 +265,16 @@ Phase 2 で学んだ Nuxt 固有の機能をすべて使うアプリ。
   - `src/` 外のファイルは `tsconfig.app.json` の `include` 対象外になるため補完・型解決が効かない
   - `useFetch` で `onMounted` は不要。fetch は DOM 不要なので `setup()` 実行時に直接呼ぶ。`onMounted` を使うとコンポーネント外（Pinia ストアなど）から呼べなくなる
   - 役割の使い分け: props/emits（2階層）、provide/inject（3階層以上の橋渡し）、Composable（再利用ロジック）、Pinia（グローバル状態）
+
+### 2026-05-03
+- **1.5B-1 Vuetify 3 セットアップ** 完了
+  - `pnpm add vuetify @mdi/font` で既存プロジェクトに後付けインストール（`pnpm create vuetify` は新規プロジェクト生成用）
+  - `createVuetify()` で設定を作り、`main.ts` で `.use(vuetify)` 登録（Router / Pinia と同じプラグインパターン）
+  - `<v-app>` はルートに必須。`<v-main>` は app-bar 等のレイアウトコンポーネントと連携して padding を自動計算する
+  - `<v-container>` は MUI の `<Container>` 相当（最大幅 + 中央寄せ）。汎用 div ではない
+  - `vite-plugin-vuetify` の `autoImport: true` で tree-shaking が有効になり、使用コンポーネントだけバンドルされる
+  - 未登録のタグ（typo 含む）はエラーにならず、Web 標準のカスタム要素として素通りする（ハイフン付きタグは Custom Elements の仕様）
+  - `.vue` ファイルの型解決には `vite-env.d.ts` の `declare module '*.vue'` が必要
 
 ---
 

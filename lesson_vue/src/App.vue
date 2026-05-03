@@ -44,7 +44,7 @@ const handleOpen = () => {
   </Lesson7Provider> -->
   <!-- 現在のurlに一致したpageを表示 -->
   <RouterView />
-  <Lesson9 />
+  <!-- <Lesson9 />
   <Lesson10 />
-  <Lesson101 />
+  <Lesson101 /> -->
 </template>
