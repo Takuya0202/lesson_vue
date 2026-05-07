@@ -106,7 +106,7 @@ export default {
 |---|---------|---------|
 | 1.5B-1 | Vuetify 3 セットアップ（プラグイン登録・SASS 設定） | ✅ 完了 |
 | 1.5B-2 | レイアウト系（`v-app`, `v-container`, `v-row`, `v-col` グリッド） | ✅ 完了 |
-| 1.5B-3 | 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`） | ⬜ 未着手 |
+| 1.5B-3 | 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`） | ✅ 完了 |
 | 1.5B-4 | フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション） | ⬜ 未着手 |
 | 1.5B-5 | データ表示系（`v-data-table`, `v-tabs`, `v-expansion-panels`） | ⬜ 未着手 |
 | 1.5B-6 | テーマカスタマイズ・ダークモード・Blueprint | ⬜ 未着手 |
@@ -277,6 +277,15 @@ Phase 2 で学んだ Nuxt 固有の機能をすべて使うアプリ。
   - `src/` 外のファイルは `tsconfig.app.json` の `include` 対象外になるため補完・型解決が効かない
   - `useFetch` で `onMounted` は不要。fetch は DOM 不要なので `setup()` 実行時に直接呼ぶ。`onMounted` を使うとコンポーネント外（Pinia ストアなど）から呼べなくなる
   - 役割の使い分け: props/emits（2階層）、provide/inject（3階層以上の橋渡し）、Composable（再利用ロジック）、Pinia（グローバル状態）
+
+### 2026-05-07
+- **1.5B-3 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`）** 完了
+  - `v-btn` は `variant` prop でスタイルを切り替える（elevated/outlined/tonal/text/plain）。`loading`・`disabled` で状態管理
+  - `v-card` は子コンポーネント（`v-card-title` / `v-card-subtitle` / `v-card-text` / `v-card-actions`）で構造化。`v-spacer` は `flex: 1` 相当
+  - `v-chip` は `closable` + `@click:close` で削除可能なタグを実装
+  - `@click:close` はコロン込みでひとつのイベント名（Vuetify のサブイベント命名規則）。Vue は `click:close` という文字列をそのままイベント名として扱う
+  - Tailwind と Vuetify の共存は CSS レイヤー特異度の問題で衝突しやすい。Vuetify 使用時は Vuetify のユーティリティクラス（`d-flex flex-column ga-2` 等）を使うのが無難
+  - `v-dialog` は `v-model` で開閉状態を管理（React の `isOpen` state と同じ発想）
 
 ### 2026-05-03
 - **1.5B-1 Vuetify 3 セットアップ** 完了
