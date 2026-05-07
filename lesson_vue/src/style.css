@@ -1,1 +1,4 @@
-@import "tailwindcss";
+@layer vuetify-base, theme, base, components, utilities;
+
+@import 'vuetify/styles' layer(vuetify-base);
+@import 'tailwindcss';
