@@ -108,7 +108,7 @@ export default {
 | 1.5B-2 | レイアウト系（`v-app`, `v-container`, `v-row`, `v-col` グリッド） | ✅ 完了 |
 | 1.5B-3 | 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`） | ✅ 完了 |
 | 1.5B-4 | フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション） | ✅ 完了 |
-| 1.5B-5 | データ表示系（`v-data-table`, `v-tabs`, `v-expansion-panels`） | ⬜ 未着手 |
+| 1.5B-5 | データ表示系（`v-data-table`, `v-tabs`, `v-expansion-panels`） | ✅ 完了 |
 | 1.5B-6 | テーマカスタマイズ・ダークモード・Blueprint | ⬜ 未着手 |
 
 ### 実践 A: Vue SPA 総復習（Phase 1.5 完了後・Nuxt 着手前）
@@ -279,6 +279,13 @@ Phase 2 で学んだ Nuxt 固有の機能をすべて使うアプリ。
   - 役割の使い分け: props/emits（2階層）、provide/inject（3階層以上の橋渡し）、Composable（再利用ロジック）、Pinia（グローバル状態）
 
 ### 2026-05-07
+- **1.5B-5 データ表示系（`v-data-table`, `v-tabs`, `v-expansion-panels`）** 完了
+  - `v-tabs` と `v-window` を同じ `v-model` で繋ぐ。`v-tab` の `value` と `v-window-item` の `value` が一致したものが表示される
+  - `v-expansion-panels` は `multiple` prop で複数同時展開が可能。なしだと1つだけ開くアコーディオン動作
+  - `v-data-table` は `:headers`（`title` / `key` / `sortable`）と `:items` を渡すだけでソート・ページネーションが自動でつく
+  - `item-value` は各行のユニークキー（React の `key` 相当）
+  - `#item.{key}` slot で特定列だけカスタム表示できる（v-chip を埋め込む等）。React の TanStack Table の `cell:` カスタマイズと同じ発想
+  - `bottom` slot を空にするとページネーション非表示。`density` prop で行の密度を調整可能
 - **1.5B-4 フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション）** 完了
   - `v-text-field` の `v-model` は React の `value + onChange` を1つにまとめた糖衣構文。`type` は別の prop でフィールドの見た目・動作を制御
   - `v-select` は `:items` で選択肢を渡し、オブジェクト配列には `item-title`（表示）と `item-value`（バインド値）を指定する
