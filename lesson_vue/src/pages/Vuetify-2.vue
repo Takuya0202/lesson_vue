@@ -45,6 +45,31 @@ async function handleSubmit() {
 function handleReset() {
   form.value?.reset()
 }
+
+const tab = ref('profile')
+
+const faqs = [
+  { title: 'Vue とは何ですか？', body: 'JavaScript の UI フレームワークです。' },
+  {
+    title: 'Vuetify とは何ですか？',
+    body: 'Vue 用の Material Design コンポーネントライブラリです。',
+  },
+  { title: 'Pinia とは何ですか？', body: 'Vue の状態管理ライブラリです。' },
+]
+
+const headers = [
+  { title: '名前', key: 'name', sortable: true },
+  { title: '年齢', key: 'age', sortable: true },
+  { title: '職業', key: 'job', sortable: false },
+]
+
+const users2 = [
+  { id: 1, name: '山田 太郎', age: 28, job: 'エンジニア' },
+  { id: 2, name: '佐藤 花子', age: 34, job: 'デザイナー' },
+  { id: 3, name: '鈴木 一郎', age: 22, job: '学生' },
+  { id: 4, name: '田中 次郎', age: 45, job: 'マネージャー' },
+  { id: 5, name: '伊藤 三郎', age: 31, job: 'エンジニア' },
+]
 </script>
 
 <template>
@@ -123,6 +148,42 @@ function handleReset() {
             <v-btn variant="outlined" @click="handleReset">リセット</v-btn>
           </div>
         </v-form>
+      </v-container>
+
+      <v-container>
+        <!-- タブヘッダー -->
+        <v-tabs v-model="tab" color="primary">
+          <v-tab value="profile">プロフィール</v-tab>
+          <v-tab value="settings">設定</v-tab>
+          <v-tab value="history">履歴</v-tab>
+        </v-tabs>
+
+        <!-- タブコンテンツ -->
+        <v-window v-model="tab">
+          <v-window-item value="profile">
+            <v-card flat class="pa-4">プロフィールの内容</v-card>
+          </v-window-item>
+          <v-window-item value="settings">
+            <v-card flat class="pa-4">設定の内容</v-card>
+          </v-window-item>
+          <v-window-item value="history">
+            <v-card flat class="pa-4">履歴の内容</v-card>
+          </v-window-item>
+        </v-window>
+      </v-container>
+
+      <v-container>
+        <!-- multiple: 複数同時展開を許可 -->
+        <v-expansion-panels multiple>
+          <v-expansion-panel v-for="faq in faqs" :key="faq.title">
+            <v-expansion-panel-title>{{ faq.title }}</v-expansion-panel-title>
+            <v-expansion-panel-text>{{ faq.body }}</v-expansion-panel-text>
+          </v-expansion-panel>
+        </v-expansion-panels>
+      </v-container>
+
+      <v-container>
+        <v-data-table :headers="headers" :items="users2" item-value="id" items-per-page="3" />
       </v-container>
     </v-main>
   </v-app>
