@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import type { VForm } from 'vuetify/components'
+import Theme from '../components/lesson/Theme.vue'
 
 const name = ref('')
 const password = ref('')
@@ -185,6 +186,8 @@ const users2 = [
       <v-container>
         <v-data-table :headers="headers" :items="users2" item-value="id" items-per-page="3" />
       </v-container>
+
+      <theme />
     </v-main>
   </v-app>
 </template>

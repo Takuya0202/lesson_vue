@@ -106,7 +106,7 @@ export default {
 | 1.5B-3 | 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`） | ✅ 完了 |
 | 1.5B-4 | フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション） | ✅ 完了 |
 | 1.5B-5 | データ表示系（`v-data-table`, `v-tabs`, `v-expansion-panels`） | ✅ 完了 |
-| 1.5B-6 | テーマカスタマイズ・ダークモード・Blueprint | ⬜ 未着手 |
+| 1.5B-6 | テーマカスタマイズ・ダークモード・Blueprint | ✅ 完了 |
 
 ### 実践 A: Vue SPA 総復習（Phase 1.5 完了後・Nuxt 着手前）
 
@@ -306,6 +306,14 @@ Phase 2 で学んだ Nuxt 固有の機能をすべて使うアプリ。
   - `@click:close` はコロン込みでひとつのイベント名（Vuetify のサブイベント命名規則）。Vue は `click:close` という文字列をそのままイベント名として扱う
   - Tailwind と Vuetify の共存は CSS レイヤー特異度の問題で衝突しやすい。Vuetify 使用時は Vuetify のユーティリティクラス（`d-flex flex-column ga-2` 等）を使うのが無難
   - `v-dialog` は `v-model` で開閉状態を管理（React の `isOpen` state と同じ発想）
+
+### 2026-05-08
+- **1.5B-6 テーマカスタマイズ・ダークモード・Blueprint** 完了
+  - `createVuetify` の `theme.themes` でカスタムカラーを定義し、`color="brand"` のように prop で使える
+  - ライト/ダークそれぞれにカラーセットを持たせることができる
+  - `useTheme()` で現在のテーマ名を取得・変更できる（React の `useContext(ThemeContext)` 相当）
+  - `theme.global.name.value` に `'light'` / `'dark'` を代入するだけで全コンポーネントが切り替わる（CSS 変数の書き換えで実現）
+  - Blueprint（`md2` / `md3`）は全コンポーネントのデフォルト prop を一括上書きする仕組み。`md3` は Material You スタイル
 
 ---
 

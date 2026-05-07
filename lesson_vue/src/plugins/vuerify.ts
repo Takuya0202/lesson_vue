@@ -11,6 +11,27 @@ import '@mdi/font/css/materialdesignicons.css'
 //   directives,
 // })
 
-const vuerify = createVuetify()
+// カラーテーマのカスタマイズ。colorのpropsに新たに指定できる。
+const vuetify = createVuetify({
+    // theme: {
+    //   defaultTheme: 'light',
+    //   themes: {
+    //     light: {
+    //       dark: false,
+    //       colors: {
+    //         primary: '#1976D2',
+    //         brand: '#6200EE',
+    //       },
+    //     },
+    //     dark: {
+    //       dark: true,
+    //       colors: {
+    //         primary: '#90CAF9',  // ダーク時は薄めの青
+    //         brand: '#BB86FC',    // ダーク時は薄い紫
+    //       },
+    //     },
+    //   },
+    // },
+  })
 
-export default vuerify
+export default vuetify
