@@ -107,7 +107,7 @@ export default {
 | 1.5B-1 | Vuetify 3 セットアップ（プラグイン登録・SASS 設定） | ✅ 完了 |
 | 1.5B-2 | レイアウト系（`v-app`, `v-container`, `v-row`, `v-col` グリッド） | ✅ 完了 |
 | 1.5B-3 | 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`） | ✅ 完了 |
-| 1.5B-4 | フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション） | ⬜ 未着手 |
+| 1.5B-4 | フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション） | ✅ 完了 |
 | 1.5B-5 | データ表示系（`v-data-table`, `v-tabs`, `v-expansion-panels`） | ⬜ 未着手 |
 | 1.5B-6 | テーマカスタマイズ・ダークモード・Blueprint | ⬜ 未着手 |
 
@@ -279,6 +279,12 @@ Phase 2 で学んだ Nuxt 固有の機能をすべて使うアプリ。
   - 役割の使い分け: props/emits（2階層）、provide/inject（3階層以上の橋渡し）、Composable（再利用ロジック）、Pinia（グローバル状態）
 
 ### 2026-05-07
+- **1.5B-4 フォーム系（`v-text-field`, `v-select`, `v-form` バリデーション）** 完了
+  - `v-text-field` の `v-model` は React の `value + onChange` を1つにまとめた糖衣構文。`type` は別の prop でフィールドの見た目・動作を制御
+  - `v-select` は `:items` で選択肢を渡し、オブジェクト配列には `item-title`（表示）と `item-value`（バインド値）を指定する
+  - `v-form` の `:rules` は関数配列。各関数は `true`（有効）またはエラーメッセージ文字列を返す
+  - `v-form` の `ref` に型をつけるには `ref<InstanceType<typeof VForm> | null>(null)` — `VForm` はクラスではなくコンポーネントオブジェクトなので `InstanceType<typeof>` が必要
+  - `form.value?.validate()` は非同期で `{ valid: boolean }` を返す。`reset()` は値とエラーを両方クリア、`resetValidation()` はエラー表示のみクリア
 - **1.5B-3 基本コンポーネント（`v-btn`, `v-card`, `v-chip`, `v-dialog`）** 完了
   - `v-btn` は `variant` prop でスタイルを切り替える（elevated/outlined/tonal/text/plain）。`loading`・`disabled` で状態管理
   - `v-card` は子コンポーネント（`v-card-title` / `v-card-subtitle` / `v-card-text` / `v-card-actions`）で構造化。`v-spacer` は `flex: 1` 相当
